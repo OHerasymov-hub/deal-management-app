@@ -1,0 +1,108 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<div class="content-container"  style="padding: 20px; font-family: sans-serif;">
+  @if(!isLoggedIn) {
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-icon">🚀</div>
+      <h2>Welcome to Deal Management</h2>
+      <p>Please sign in to manage your enterprise deals and track progress.</p>
+
+      <!-- log in button -->
+      <button class="login-btn" (click)="login()">
+        <span class="btn-text">Sign In with Keycloak</span>
+        <span class="btn-arrow">→</span>
+      </button>
+
+      <div class="login-footer">
+        Secured by OpenID Connect
+      </div>
+    </div>
+  </div>
+  } @else {
+  <header class="main-header">
+    <div class="brand">
+      <span class="logo">🚀</span>
+      <h1>Deal Management</h1>
+    </div>
+
+    
+    <div class="user-control">
+      <span class="user-status">
+        <span class="dot"></span> Online
+      </span>
+      <button class="logout-btn" (click)="logout()">
+        <i class="icon-exit"></i> Log out
+      </button>
+    </div>
+    
+  </header>
+  
+  <div class="content-wrapper">
+    <!-- 2. Creation Panel (ACTION BAR) -->
+    <section class="create-deal-section">
+      <div class="section-header">
+        <span class="badge">NEW</span>
+        <h3>Quick Create</h3>
+      </div>
+      
+      <div class="inline-form">
+        <div class="input-group">
+          <label>Title</label>
+          <input [(ngModel)]="newTitle" placeholder="What's the deal?">
+        </div>
+        
+        <div class="input-group">
+          <label>Amount ($)</label>
+          <input type="number" [(ngModel)]="newAmount">
+        </div>
+        
+        <button class="primary-btn" (click)="saveDeal()" [disabled]="!newTitle">
+          Create Deal
+        </button>
+      </div>
+    </section>
+
+    @if(isLoggedIn){
+    <div class="main-layout">
+
+      
+
+      <div class="list-column">
+        <h3>📊 List of Deals</h3>
+        @for(deal of deals; track deal.id) {
+        <app-deal-card [deal]="deal" (open)="onOpen($event)"></app-deal-card>
+        }
+      </div>
+      <div class="details-column">
+        @if(selectedDeal) {
+        <app-deal-details [deal]="selectedDeal"
+                          (save)="handleSave($event)"
+                          (cancel)="selectedDeal = null"
+                          (changeStatus)="changeStatus($event)">
+        </app-deal-details>
+        }
+      </div>
+    </div>
+    }
+  </div>
+}
+</div>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+

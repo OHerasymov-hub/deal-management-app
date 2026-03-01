@@ -1,0 +1,21 @@
+
+<div class="deal-item" role="button" tabindex="0" (click)="onClick()">
+  <div class="deal-body">
+    <div class="deal-row">
+      <h3 class="deal-title">{{ deal.title }}</h3>
+
+      <div class="deal-meta">
+        <time class="deal-date">
+          {{ formatDate(deal.createdAt) }}
+        </time>
+      </div>
+    </div>
+
+   
+
+    <div class="deal-row deal-row--bottom">
+      <div>Amount: {{deal.amount}} ($)</div>
+
+    </div>
+  </div>
+<!--</div><p>deal-card works!</p>-->
