@@ -1,0 +1,191 @@
+:host {
+  display: block;
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.details-container {
+  width: 380px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  border: 1px solid #f0f0f0;
+  animation: slideIn 0.3s ease-out;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      color: #1a1a1b;
+      font-weight: 600;
+    }
+
+    .close-btn {
+      background: #f5f5f7;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      color: #6e6e73;
+
+      &:hover {
+        background: #e8e8ed;
+        color: #1d1d1f;
+      }
+    }
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #86868b;
+      margin-bottom: 8px;
+      margin-left: 4px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid #d2d2d7;
+      font-size: 1rem;
+      color: #1d1d1f;
+      transition: all 0.2s;
+      box-sizing: border-box; 
+
+      &:focus {
+        outline: none;
+        border-color: #0071e3;
+        box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+      }
+
+      &::placeholder {
+        color: #c1c1c6;
+      }
+    }
+  }
+
+  .meta-info {
+    background: #fbfbfd;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 24px 0;
+
+    p {
+      margin: 8px 0;
+      font-size: 0.8rem;
+      color: #6e6e73;
+      display: flex;
+      justify-content: space-between;
+
+      strong {
+        color: #1d1d1f;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .status-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px; 
+    background: #f5f5f7; 
+    color: #0071e3; 
+    border: 1px solid #0071e3; 
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+
+    &:hover:not(:disabled) {
+      background: #0071e3;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.2);
+    }
+
+    &:active:not(:disabled) {
+      transform: scale(0.98); // press effect
+    }
+
+    &:disabled {
+      background: #f5f5f7;
+      color: #a1a1a6;
+      border-color: #d2d2d7;
+      cursor: not-allowed;
+    }
+
+    &.complete-action {
+      color: #28a745;
+      border-color: #28a745;
+
+      &:hover {
+        background: #28a745;
+        color: white;
+      }
+    }
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: #0071e3;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background: #0077ed;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &:disabled {
+      background: #d2d2d7;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+}
+
+// Fade in when selected deal
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

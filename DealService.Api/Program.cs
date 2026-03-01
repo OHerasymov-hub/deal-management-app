@@ -50,6 +50,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
     });
 builder.Services.AddSingleton<IIntegrationEventPublisher, KafkaIntegrationEventPublisher>();
+builder.Services.AddCors(options => {
+    options.AddDefaultPolicy(policy => {
+        policy.WithOrigins("http://localhost:4200") // Angular
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 var app = builder.Build();
 app.UseExceptionHandler();
 app.Use(async (context, next) =>
@@ -64,6 +71,8 @@ if (app.Environment.IsDevelopment())
 {
     app.MapScalarApiReference();
 }
+
+app.UseCors();
 
 app.UseAuthentication();
 app.UseAuthorization();

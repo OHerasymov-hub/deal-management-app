@@ -1,0 +1,48 @@
+<div class="details-container" *ngIf="deal">
+  <div class="header">
+    <h3>📝 Edit Deal</h3>
+    <button class="close-btn" (click)="onCancel()">✖</button>
+  </div>
+
+  <div class="form-group">
+    <label>Title</label>
+    <input [(ngModel)]="deal.title" placeholder="Enter title">
+  </div>
+
+  <div class="form-group">
+    <label>Amount ($)</label>
+    <input type="number" [(ngModel)]="deal.amount">
+  </div>
+
+  <!--<div class="form-group">
+    <label>Status</label>
+    <select [(ngModel)]="deal.status">
+      <option value="New">New</option>
+      <option value="InProgress">In Progress</option>
+      <option value="Closed">Closed</option>
+    </select>
+  </div>-->
+
+  <div class="meta-info">
+    <p><strong>Internal ID:</strong> {{ deal.id }}</p>
+    <p><strong>Created:</strong> {{ deal.createdAt | date:'medium' }}</p>
+  </div>
+
+  <button class="submit-btn" (click)="onSave()" [disabled]="!deal.title">
+    Save Changes
+  </button>
+  <button *ngIf="deal.status !== 'Closed'"
+          class="status-btn"
+          [class.complete-action]="deal.status === 'InProgress'"
+          (click)="onChangeStatus()">
+
+    <!-- Иконка и текст меняются динамически -->
+    <span *ngIf="deal.status === 'New'">🚀 Start Progress</span>
+    <span *ngIf="deal.status === 'InProgress'">✅ Complete Deal</span>
+  </button>
+
+  <div *ngIf="deal.status === 'Closed'" style="text-align: center; margin-top: 15px; color: #28a745; font-weight: 600;">
+    🎉 This deal is finalized
+  </div>
+
+</div>
