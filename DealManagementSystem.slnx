@@ -27,6 +27,7 @@
   </Project>
   <Project Path="DealService.Api/DealService.Api.csproj" Id="a7c5a4df-690b-48ae-9516-f19dc276b320" />
   <Project Path="DealService.Application/DealService.Application.csproj" Id="ddd9c65d-6e65-4bc5-b8c1-6d9054ba2509" />
+  <Project Path="DealService.Domain.Tests/DealService.Domain.Tests.csproj" Id="329eb6eb-24d9-46e8-a67e-ec4323e6f798" />
   <Project Path="DealService.Domain/DealService.Domain.csproj" Id="616374c9-93c1-4784-a0b2-b9b5f9af8dc8" />
   <Project Path="DealService.Infrastructure/DealService.Infrastructure.csproj" Id="99bb5867-31cb-4c42-b555-47ebed9b6742" />
   <Project Path="NotificationService/NotificationService.csproj" Id="a3fc5610-cae1-4bce-9221-082ec95a8cab" />
